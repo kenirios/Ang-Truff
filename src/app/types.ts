@@ -5,9 +5,9 @@ export interface Poll extends PollForm {
 }
 
 export interface PollForm {
-  question: string; // Which days of week you like most?
-  options: string[]; // ["Monday", "Tuesday", "Wednesday"....]
-  thumbnail: string; // https://image.png
+  nombre: string; // Which days of week you like most?
+  //options: string[]; // ["Monday", "Tuesday", "Wednesday"....]
+  cantidad: number; // https://image.png  
 }
 
 export interface PollVote {

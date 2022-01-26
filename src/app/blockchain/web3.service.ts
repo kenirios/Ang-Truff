@@ -3,8 +3,15 @@ import Web3 from 'web3';
 import { Contract } from 'web3-eth-contract';
 import { Observable } from 'rxjs';
 
-const contractAbi = require('./contractABI.json');
+//const contractAbi = require('./contractABI.json');
+
+
+const contA = require('./LipToken.json');
+const Abi = JSON.parse(JSON.stringify(contA));
+const contractAbi = Abi.abi;
 declare var window: any;
+
+const value = 1;
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +19,7 @@ declare var window: any;
 export class Web3Service {
   private web3: Web3;
   private contract: Contract;
-  private contractAddress = '0x4BC34D55078a2858F3Bd91B209Da46BA01AE9986';
+  private contractAddress = '0xd3e343160F2b92906eDA5C445003F91265c984D9';
 
   constructor(private zone: NgZone) {
     if (window.web3) {
@@ -36,6 +43,7 @@ export class Web3Service {
 
   // executeTransaction("vote", pollId, vote)
   // executeTransaction("createPoll", question, thumb, opt)
+
   async executeTransaction(fnName: string, ...args: any[]): Promise<void> {
     const acc = await this.getAccount();
     this.contract.methods[fnName](...args).send({ from: acc });
@@ -59,4 +67,5 @@ export class Web3Service {
       });
     });
   }
+  
 }

@@ -32,12 +32,14 @@ export class PollService {
 
   createPoll(poll: PollForm) {
     this.web3.executeTransaction(
-      'createPoll',
-      poll.question,
-      poll.thumbnail || '',
-      poll.options.map((opt) => fromAscii(opt))
+      'createRandomLip',
+      poll.nombre,
+      poll.cantidad,
+
     );
   }
+
+  
 
   private normalizeVoter(voter) {
     return {
